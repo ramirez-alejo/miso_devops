@@ -48,7 +48,7 @@ public class BlackListEmailHandler(EmailsDbContext dbContext) : IRequestHandler<
 		var existing = await dbContext.BlackList.FirstOrDefaultAsync(b => b.Email == request.Email, cancellationToken);
 		if (existing != null)
 		{
-			throw new ValidationException("Email already exists in the blacklist");
+			throw new Infrastructure.Exceptions.ValidationException("Email already exists in the blacklist");
 		}
 		
 		var blackList = new BlackList
