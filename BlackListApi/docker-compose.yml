@@ -1,0 +1,6 @@
+﻿services:
+  blacklistapi:
+    image: blacklistapi
+    build:
+      context: .
+      dockerfile: BlackListApi/Dockerfile
