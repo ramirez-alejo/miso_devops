@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "a103ef0d-8ec4-4f5b-afb8-3764db3cfe63",
+		"name": "BlackListAPI",
+		"description": "Esta API permite a los clientes interactuar con la funcionalidad de la lista negra. Consiste en dos servicios principales: agregar un correo electrónico a la lista negra y verificar si un correo electrónico ya está en la lista negra. La API garantiza que se puedan bloquear de manera efectiva las direcciones de correo electrónico no deseadas o potencialmente dañinas para la organización, y proporciona transparencia sobre el estado de los correos listados.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16163575",
+		"_collection_link": "https://www.postman.com/camilobg/workspace/blacklistapi/collection/16163575-a103ef0d-8ec4-4f5b-afb8-3764db3cfe63?action=share&source=collection_link&creator=16163575"
+	},
+	"item": [
+		{
+			"name": "Documentacion",
+			"item": [
+				{
+					"name": "Agregar Correo al Lista negra",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Usuario@live.com\",\r\n    \"blocked_reason\": \"texto de ejemplo\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						},
+						"description": "Este endpoint permite agregar un correo electrónico a la lista negra global de la organización. La lista negra se utiliza para garantizar que ciertas direcciones de correo electrónico estén restringidas y no puedan interactuar con los servicios de la organización\n\n---\n\n# **Autorización de la Solicitud**:\n\nSe requiere un token Bearer para la autorización.\n\n---\n\n# **Cuerpo de la Solicitud**:\n\n- `email` (String, Obligatorio): La dirección de correo electrónico que se agregará a la lista negra.\n    \n- `app_uuid` (String, Obligatorio): El identificador único (UUID) de la aplicación cliente que realiza la solicitud.\n    \n- `blocked_reason` (String, Opcional, longitud máxima: 255): La razón para agregar este correo electrónico a la lista negra.\n    \n\n---\n\n# **Respuestas:**\n\n## Exitosas:\n\n- Estado: `200` en caso de éxito.\n    \n- Content-Type: `application/json`\n    \n\n## Con Error:\n\n- `400 Bad Request`: Parámetros ausentes o inválidos.\n    \n- `401 Unauthorized`:El API Key no se proporciona o es inválido  \n    \n\n---\n\n# **Notas**:\n\n- El servicio registra internamente la dirección IP del cliente que realiza la solicitud, así como la fecha y hora de la misma."
+					},
+					"response": [
+						{
+							"name": "Agregar Correo al Lista negra - blocked_reason too long",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"email\": \"ramirezalejo2@live.com\",\r\n\t\"blocked_reason\": \"Test99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\",\r\n\t\"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiBaseUrl}}/blacklist",
+									"host": [
+										"{{apiBaseUrl}}"
+									],
+									"path": [
+										"blacklist"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Agregar Correo al Lista negra - No email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiBaseUrl}}/blacklist",
+									"host": [
+										"{{apiBaseUrl}}"
+									],
+									"path": [
+										"blacklist"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Agregar Correo al Lista negra - No AppId",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"Usuario@live.com\",\r\n    \"blocked_reason\": \"texto de ejemplo\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiBaseUrl}}/blacklist",
+									"host": [
+										"{{apiBaseUrl}}"
+									],
+									"path": [
+										"blacklist"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Verificar si un Correo Electrónico está en la Lista Negra",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{apikey}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist/usuario@ejemplo.com",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist",
+								"usuario@ejemplo.com"
+							]
+						},
+						"description": "# **Descripción**:\n\nEste endpoint permite verificar si un correo electrónico específico está presente en la lista negra global de la organización, así como el motivo por el cual fue agregado si aplica.\n\n---\n\n# **Autorización de la Solicitud**:\n\nSe requiere un token Bearer para la autorización.\n\n---\n\n# **Parámetros de la URL**:\n\n- `email` (String, Obligatorio): La dirección de correo electrónico a verificar.\n    \n\n---\n\n# **Respuesta**:\n\n## **Exitosa:**\n\n- Estado: `200 OK` en caso de éxito.\n    \n- Content-Type: `application/json`\n    \n\nCon error:\n\n- `401 Unauthorized`: El token Bearer no se proporciona o es inválido.\n- `404 Not found`: No se encuentra el email.\n    \n\n  \n\n  \n  \n\n# **Notas**:\n\n- Si un correo electrónico se encuentra en la lista negra, la respuesta incluye el motivo por el cual fue agregado. De lo contrario, la respuesta simplemente indica que el correo no está en la lista negra."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "Post black List reason too long",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 400\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post black List email No email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 400\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post black List email No AppId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 400\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post black List email no authenticado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 401\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post black List email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 201\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var value = pm.environment.get(\"index\");\r",
+									"\r",
+									"if( !value) {\r",
+									"    pm.environment.set(\"index\", 1);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testc{{index}}@live.com\",\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get email from blacklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test we get back a 201\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var index = pm.environment.get(\"index\");\r",
+									"pm.environment.set(\"index\", index+1);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-Api-Key",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBaseUrl}}/blacklist/testc{{index}}@live.com",
+							"host": [
+								"{{apiBaseUrl}}"
+							],
+							"path": [
+								"blacklist",
+								"testc{{index}}@live.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiBaseUrl",
+			"value": "http://blacklistapi-env.eba-vnccazr3.us-east-2.elasticbeanstalk.com",
+			"type": "string"
+		},
+		{
+			"key": "index",
+			"value": "10010",
+			"type": "string"
+		},
+		{
+			"key": "apikey",
+			"value": "123456",
+			"type": "string"
+		}
+	]
+}
