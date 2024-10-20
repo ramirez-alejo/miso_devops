@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "7a115268-84cb-4468-a8d8-c705022f168c",
+		"name": "Devops",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4872632"
+	},
+	"item": [
+		{
+			"name": "Post black List reason too long",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 400\r",
+							"pm.test(\"Response status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post black List email No email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 400\r",
+							"pm.test(\"Response status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post black List email No AppId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 400\r",
+							"pm.test(\"Response status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post black List email no authenticado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 401\r",
+							"pm.test(\"Response status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ramirezalejo2@live.com\",\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post black List email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 201\r",
+							"pm.test(\"Response status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var value = pm.environment.get(\"index\");\r",
+							"\r",
+							"if( !value) {\r",
+							"    pm.environment.set(\"index\", 1);\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testc{{index}}@live.com\",\r\n    \"blocked_reason\": \"Test\",\r\n    \"app_uuid\": \"479d2bd7-3c95-4ea5-bb0c-fe394fa7a7e0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get email from blacklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test we get back a 201\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var index = pm.environment.get(\"index\");\r",
+							"pm.environment.set(\"index\", index+1);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-Api-Key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiBaseUrl}}/blacklist/testc{{index}}@live.com",
+					"host": [
+						"{{apiBaseUrl}}"
+					],
+					"path": [
+						"blacklist",
+						"testc{{index}}@live.com"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiBaseUrl",
+			"value": "http://blacklistapi-env.eba-vnccazr3.us-east-2.elasticbeanstalk.com",
+			"type": "string"
+		},
+		{
+			"key": "index",
+			"value": "10010",
+			"type": "string"
+		}
+	]
+}

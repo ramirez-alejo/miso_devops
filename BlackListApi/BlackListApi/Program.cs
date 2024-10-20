@@ -5,6 +5,7 @@ using BlackListApi.Infrastructure;
 using BlackListApi.Queries;
 using FluentValidation;
 using Mediator;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
@@ -68,6 +69,12 @@ var dbContext = scope.ServiceProvider.GetRequiredService<EmailsDbContext>();
 // Apply the migrations
 dbContext.Database.Migrate();
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+	ForwardedHeaders = ForwardedHeaders.XForwardedFor |
+					   ForwardedHeaders.XForwardedProto
+});
+
 app.MapPost("/blacklist", async (IMediator mediator, BlackListEmailCommand command, HttpContext httpContext) =>
 {
 	var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
@@ -86,4 +93,3 @@ app.MapGet("/blacklist/{email}", async (IMediator mediator, string email) =>
 
 
 app.Run();
-

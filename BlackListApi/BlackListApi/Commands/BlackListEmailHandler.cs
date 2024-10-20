@@ -32,9 +32,9 @@ public class BlackListEmailValidator : RequestValidationBehavior<BlackListEmailC
 {
 	public BlackListEmailValidator()
 	{
-		RuleFor(x => x.Email).NotNull().NotEmpty().MaximumLength(50);
+		RuleFor(x => x.Email).NotEmpty().MaximumLength(50);
 		RuleFor(x => x.Email).EmailAddress();
-		RuleFor(x => x.AppUuid).NotNull().NotEmpty().MaximumLength(50);
+		RuleFor(x => x.AppUuid).NotEmpty().MaximumLength(50);
 		RuleFor(x => x.BlockedReason).MaximumLength(255);
 	}
 }
