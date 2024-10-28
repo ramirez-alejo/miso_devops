@@ -27,7 +27,7 @@ jobs:
         run: dotnet build ./BlackListApi/BlackListApi.sln --configuration Release --no-restore 
 
       - name: Test
-        run: dotnet test --configuration Release --no-build --no-restore --logger "trx;LogFileName=test-results.xml"
+        run: dotnet test ./BlackListApi/BlackListApi.sln --configuration Release --no-build --no-restore --logger "trx;LogFileName=test-results.xml"
 
       - name: Publish Test Results
         uses: dorny/test-reporter@v1
