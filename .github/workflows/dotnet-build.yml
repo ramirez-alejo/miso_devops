@@ -24,7 +24,7 @@ jobs:
         run: dotnet restore ./BlackListApi/BlackListApi.sln
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore 
+        run: dotnet build ./BlackListApi/BlackListApi.sln --configuration Release --no-restore 
 
       - name: Test
         run: dotnet test --configuration Release --no-build --no-restore --logger "trx;LogFileName=test-results.xml"
