@@ -17,7 +17,7 @@ phases:
   post_build:
     commands:
       - echo "Ejecutando las pruebas..."
-      - dotnet test BlackListApi/Tests/Tests.csproj --configuration Release --no-build
+      - dotnet test BlackListApi/Tests/Tests.csproj --configuration Release --no-restore
 artifacts:
   files:
     - '**/bin/Release/net8.0/publish/**/*'
