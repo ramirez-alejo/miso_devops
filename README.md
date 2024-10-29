@@ -11,8 +11,6 @@ Para acceder a la documentación del API, puede visitar el siguiente [enlace](ht
 
 ### Cómo Importar la Colección de Postman
 
-
-
 1. **Abrir Postman**: Asegúrate de tener Postman instalado. Si no lo tienes, puedes descargarlo [aquí](https://www.postman.com/downloads/).
 2. **Seleccionar 'Importar'**: En la esquina superior izquierda de la aplicación, haz clic en el botón **"Import"**.
 3. **Cargar el Archivo**: Navegar a la ruta del repositorio donde se encuentra la colección (`BlackListApi/BlackListAPI.postman_collection.json`).
