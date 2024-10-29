@@ -13,18 +13,20 @@ namespace BlackListApi.Commands;
 public class BlackListEmailCommand : IRequest<BlackListEmailResponse>
 {
 	[JsonPropertyName("email")]
-	public string Email { get; set; }
-	[JsonPropertyName("blocked_reason")]
-	public string BlockedReason { get; set; }
-	[JsonPropertyName("app_uuid")]
-	public string AppUuid { get; set; }
+	public string Email { get; set; } = null!;
 
-	public string SourceIp { get; set; }
+	[JsonPropertyName("blocked_reason")]
+	public string BlockedReason { get; set; } = null!;
+
+	[JsonPropertyName("app_uuid")]
+	public string AppUuid { get; set; } = null!;
+
+	public string SourceIp { get; set; } = null!;
 }
 
 public class BlackListEmailResponse
 {
-	public string Message { get; set; }
+	public string Message { get; set; } = null!;
 }
 
 
