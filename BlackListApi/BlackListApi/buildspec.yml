@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+    commands:
+      - echo "Instalando las dependencias necesarias"
+  pre_build:
+    commands:
+      - echo "Restaurando las dependencias del proyecto..."
+      - dotnet restore BlackListApi/BlackListApi/BlackListApi.csproj
+  build:
+    commands:
+      - echo "Compilando la aplicación..."
+      - dotnet build BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release
+  post_build:
+    commands:
+      - echo "Ejecutando las pruebas..."
+      - dotnet test BlackListApi/Tests/ --configuration Release --no-build
+artifacts:
+  files:
+    - '**/bin/Release/net8.0/publish/**/*'
+  discard-paths: yes
+
+cache:
+  paths:
+    - '**/obj/**'
+    - '**/bin/**'
