@@ -24,7 +24,7 @@ phases:
       - echo "Generando la imagen con tag = fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER"
       - docker build -t fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER -f BlackListApi/Dockerfile.ci .
       - echo "Autenticando en Docker Hub con el token de acceso..."
-      - echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
+      - docker login -u $DOCKER_USERNAME --password $DOCKER_TOKEN
       - echo "Pushing la imagen al repositorio Docker Hub..."
       - docker push fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER
       
