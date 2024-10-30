@@ -22,7 +22,7 @@ phases:
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
       - echo "Generando la imagen con tag = fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER"
-      - docker build -t fcamilob/blacklistapi:$TAG -f BlackListApi/Dockerfile.ci .
+      - docker build -t fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER -f BlackListApi/Dockerfile.ci .
       - echo "Autenticando en Docker Hub con el token de acceso..."
       - echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
       - echo "Pushing la imagen al repositorio Docker Hub..."
