@@ -22,7 +22,7 @@ phases:
       - echo "Generando archivos de publicación..."
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
-      - echo "Generando la imagen con tag: fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER"
+      - echo "Generando la imagen con tag = fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER"
       - docker build -t fcamilob/blacklistapi:$TAG -f BlackListApi/Dockerfile.ci .
       - echo "Autenticando en Docker Hub con el token de acceso..."
       - echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
@@ -33,6 +33,7 @@ artifacts:
   files:
     - '**/bin/Release/net8.0/publish/**/*'
   discard-paths: yes
+  name: fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER
 
 cache:
   paths:
