@@ -1,0 +1,11 @@
+# Imagen base para aplicaciones .NET 8
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+
+# Copiar los archivos publicados al contenedor desde la carpeta personalizada
+COPY output/publish/ .
+
+EXPOSE 8080
+
+# Comando para ejecutar la aplicación
+ENTRYPOINT ["dotnet", "BlackListApi.dll"]
