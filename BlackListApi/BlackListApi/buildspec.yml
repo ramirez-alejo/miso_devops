@@ -4,7 +4,6 @@ phases:
   install:
     runtime-versions:
       dotnet: 8.0
-      docker: 20
     commands:
       - echo "Instalando las dependencias necesarias"
   pre_build:
