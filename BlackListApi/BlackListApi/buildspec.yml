@@ -22,7 +22,7 @@ phases:
       - echo "Generando archivos de publicación..."
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
-      - TAG=$(date +%Y%m%d)-$CODEBUILD_BUILD_NUMBER
+      - export TAG=$(date +%Y%m%d)-$CODEBUILD_BUILD_NUMBER
       - echo "Generando la imagen con tag: fcamilob/blacklistapi:$TAG"
       - docker build -t fcamilob/blacklistapi:$TAG -f BlackListApi/Dockerfile.ci .
       - echo "Autenticando en Docker Hub con el token de acceso..."
