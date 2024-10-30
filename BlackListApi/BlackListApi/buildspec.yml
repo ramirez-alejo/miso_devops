@@ -4,6 +4,7 @@ phases:
   install:
     runtime-versions:
       dotnet: 8.0
+      docker: 20
     commands:
       - echo "Instalando las dependencias necesarias"
   pre_build:
@@ -18,6 +19,17 @@ phases:
     commands:
       - echo "Ejecutando las pruebas..."
       - dotnet test BlackListApi/Tests/Tests.csproj --configuration Release
+      - echo "Generando archivos de publicación..."
+      - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
+      - echo "Construyendo la imagen del contenedor..."
+      - TAG=$(date +%Y%m%d)-$CODEBUILD_BUILD_NUMBER
+      - echo "Generando la imagen con tag: fcamilob/blacklistapi:$TAG"
+      - docker build -t fcamilob/blacklistapi:$TAG -f BlackListApi/Dockerfile.ci .
+      - echo "Autenticando en Docker Hub con el token de acceso..."
+      - echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
+      - echo "Pushing la imagen al repositorio Docker Hub..."
+      - docker push fcamilob/blacklistapi:$TAG
+      
 artifacts:
   files:
     - '**/bin/Release/net8.0/publish/**/*'
