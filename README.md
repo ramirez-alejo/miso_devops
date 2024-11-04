@@ -1,3 +1,13 @@
+# Entrega 2
+
+## url video sustentación
+[Video entrega 2](https://drive.google.com/file/d/1gTkn2HAVsq005UpllTf54_OgIb28qxco/view)
+
+## Documento
+[Proyecto 1 entrega 2 - Documento.pdf](https://github.com/user-attachments/files/17612671/Proyecto.1.entrega.2.-.Documento.pdf)
+
+----
+
 # Entrega 1
 
 ## Url video sustentación 
