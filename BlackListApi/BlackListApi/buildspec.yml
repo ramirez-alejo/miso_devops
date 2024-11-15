@@ -22,7 +22,7 @@ phases:
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
       - echo "Generando la imagen con tag = latest"
-      - docker build -t blacklistapi:latest 529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest -f BlackListApi/Dockerfile.ci .
+      - docker build -t 529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest -f BlackListApi/Dockerfile.ci .
       - echo "Pushing la imagen al repositorio ECR aws..."
       - docker push  529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest
       
