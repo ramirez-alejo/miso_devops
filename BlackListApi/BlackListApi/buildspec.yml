@@ -21,12 +21,10 @@ phases:
       - echo "Generando archivos de publicación..."
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
-      - echo "Generando la imagen con tag = fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER"
-      - docker build -t fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER -f BlackListApi/Dockerfile.ci .
-      - echo "Autenticando en Docker Hub con el token de acceso..."
-      - docker login -u $DOCKER_USERNAME --password $DOCKER_TOKEN
-      - echo "Pushing la imagen al repositorio Docker Hub..."
-      - docker push fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER
+      - echo "Generando la imagen con tag = latest"
+      - docker build -t blacklistapi:latest 529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest -f BlackListApi/Dockerfile.ci .
+      - echo "Pushing la imagen al repositorio ECR aws..."
+      - docker push  529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest
       
 artifacts:
   files:
