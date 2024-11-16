@@ -26,12 +26,24 @@ phases:
       - docker build -t 529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest -f BlackListApi/Dockerfile.ci .
       - echo "Pushing la imagen al repositorio ECR aws..."
       - docker push  529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest
+      - echo Writing Image Definitions file...
+      - printf '[{"name":"container-blacklist","imageUri":"529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"529088270196.dkr.ecr.us-east-1.amazonaws.com/blacklistapi:latest"}' > imageDetail.json
+      - cat imagedefinitions.json 
       
 artifacts:
   files:
-    - '**/bin/Release/net8.0/publish/**/*'
-  discard-paths: yes
-  name: fcamilob/blacklistapi:$CODEBUILD_BUILD_NUMBER
+    - '**/*'
+    - imagedefinitions.json
+    - imageDetail.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json
 
 cache:
   paths:
