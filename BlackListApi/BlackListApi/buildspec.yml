@@ -39,6 +39,8 @@ artifacts:
     - '**/*'
     - imagedefinitions.json
     - imageDetail.json
+    - taskdef.json
+    - appspec.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
