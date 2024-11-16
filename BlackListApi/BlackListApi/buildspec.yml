@@ -15,6 +15,9 @@ phases:
     commands:
       - echo "Compilando la aplicación..."
       - dotnet build BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release
+      - echo "Moviendo archivos a la carpeta raíz de artefactos..."
+      - mv BlackListApi/BlackListApi/taskdef.json .
+      - mv BlackListApi/BlackListApi/appspec.json .
   post_build:
     commands:
       - echo "Ejecutando las pruebas..."
