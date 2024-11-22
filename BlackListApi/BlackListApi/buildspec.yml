@@ -8,6 +8,8 @@ phases:
       - echo "Instalando las dependencias necesarias"
   pre_build:
     commands:
+      - echo "Installing Docker..."
+      - apt-get update && apt-get install -y docker.io
       - echo "Restaurando las dependencias del proyecto..."
       - dotnet restore BlackListApi/BlackListApi/BlackListApi.csproj
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 985539775509.dkr.ecr.us-east-2.amazonaws.com
