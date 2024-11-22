@@ -5,9 +5,9 @@
         "TargetService": {
           "Type": "AWS::ECS::Service",
           "Properties": {
-            "TaskDefinition": "<TASK_DEFINITION>",
+            "TaskDefinition": "miso-devops-blacklist",
             "LoadBalancerInfo": {
-              "ContainerName": "container-blacklist",
+              "ContainerName": "miso-devops-blacklist",
               "ContainerPort": 8080
             }
           }
