@@ -36,7 +36,7 @@ phases:
       - echo "Pushing la imagen al repositorio ECR aws..."
       - docker push  985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest
       - echo Writing Image Definitions file...
-      - printf '[{"name":"container-blacklist","imageUri":"985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"miso-devops-blacklist","imageUri":"985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest"}]' > imagedefinitions.json
       - printf '{"ImageURI":"985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest"}' > imageDetail.json
       - cat imagedefinitions.json 
       
