@@ -32,12 +32,12 @@ phases:
       - dotnet publish BlackListApi/BlackListApi/BlackListApi.csproj --configuration Release -o output/publish
       - echo "Construyendo la imagen del contenedor..."
       - echo "Generando la imagen con tag = latest"
-      - docker build -t 985539775509.dkr.ecr.us-east-2.amazonaws.com/blacklistapi:latest -f BlackListApi/Dockerfile.ci .
+      - docker build -t 985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest -f BlackListApi/Dockerfile.ci .
       - echo "Pushing la imagen al repositorio ECR aws..."
-      - docker push  985539775509.dkr.ecr.us-east-2.amazonaws.com/blacklistapi:latest
+      - docker push  985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest
       - echo Writing Image Definitions file...
-      - printf '[{"name":"container-blacklist","imageUri":"985539775509.dkr.ecr.us-east-2.amazonaws.com/blacklistapi:latest"}]' > imagedefinitions.json
-      - printf '{"ImageURI":"985539775509.dkr.ecr.us-east-2.amazonaws.com/blacklistapi:latest"}' > imageDetail.json
+      - printf '[{"name":"container-blacklist","imageUri":"985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest"}' > imageDetail.json
       - cat imagedefinitions.json 
       
 artifacts:
