@@ -8,6 +8,8 @@ phases:
       - echo "Instalando las dependencias necesarias"
   pre_build:
     commands:
+      - echo "Installing unzip..."
+      - apt-get update && apt-get install -y unzip
       - echo "Installing Docker..."
       - apt-get update && apt-get install -y docker.io
       - echo "Installing AWS CLI..."
