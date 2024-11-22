@@ -58,4 +58,3 @@ cache:
   paths:
     - '**/obj/**'
     - '**/bin/**'
-
