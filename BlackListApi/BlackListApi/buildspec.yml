@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Restaurando las dependencias del proyecto..."
       - dotnet restore BlackListApi/BlackListApi/BlackListApi.csproj
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 529088270196.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 985539775509.dkr.ecr.us-east-2.amazonaws.com
   build:
     commands:
       - echo "Compilando la aplicación..."
