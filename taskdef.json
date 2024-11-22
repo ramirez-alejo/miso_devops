@@ -10,7 +10,7 @@
           }
         ],
 
-        "image": "<IMAGE1_NAME>",
+        "image": "985539775509.dkr.ecr.us-east-1.amazonaws.com/miso-devops-blacklist:latest",
         "essential": true,
         "name": "container-blacklist",
         "environment": [
@@ -21,7 +21,6 @@
         ]        
       }
     ],
-
     "requiresCompatibilities": [
       "FARGATE"
     ],
@@ -29,4 +28,4 @@
     "cpu": "512",
     "memory": "1024",
     "family": "miso-devops-blacklist"
-  }
+}
