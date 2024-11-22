@@ -75,6 +75,9 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 					   ForwardedHeaders.XForwardedProto
 });
 
+// Health check
+app.MapGet("/health", () => Results.Ok());
+
 app.MapPost("/blacklist", async (IMediator mediator, BlackListEmailCommand command, HttpContext httpContext) =>
 {
 	var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();

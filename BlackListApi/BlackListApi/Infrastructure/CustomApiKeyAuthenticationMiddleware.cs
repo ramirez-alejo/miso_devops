@@ -6,8 +6,8 @@ public class CustomApiKeyAuthenticationMiddleware(RequestDelegate next)
 
 	public async Task InvokeAsync(HttpContext context)
 	{
-		// If request is going to swagger, skip the middleware
-		if (context.Request.Path.StartsWithSegments("/swagger"))
+		// If the request is going to swagger, skip the middleware
+		if (context.Request.Path.StartsWithSegments("/swagger") || context.Request.Path.StartsWithSegments("/health"))
 		{
 			await next(context);
 			return;
