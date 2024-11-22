@@ -9,9 +9,9 @@
           "containerPort": 8080
         }
       ],
-      "image": "985539775509.dkr.ecr.us-east-1.amazonaws.com/miso-devops-blacklist:latest",
+      "image": "985539775509.dkr.ecr.us-east-2.amazonaws.com/miso-devops:latest",
       "essential": true,
-      "name": "container-blacklist",
+      "name": "miso-devops-blacklist",
       "environment": [
         {
           "name": "DB_CONNECTION_STRING",
