@@ -7,7 +7,7 @@
           "Properties": {
             "TaskDefinition": "miso-devops-blacklist",
             "LoadBalancerInfo": {
-              "ContainerName": "miso-devops-blacklist",
+              "ContainerName": "miso-devops",
               "ContainerPort": 8080
             }
           }
